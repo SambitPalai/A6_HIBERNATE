@@ -19,4 +19,10 @@ public class Employee {
 	private String name;
 	private Double salary;
 	private String address;
+
+	public String toString() {
+		return "id="+id+", name="+name+", Salary="+salary+", Address="+address;
+	}
+	
 }
+
