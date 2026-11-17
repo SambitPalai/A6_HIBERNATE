@@ -2,6 +2,7 @@ package crud;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
 public class ReadOperation {
@@ -9,10 +10,18 @@ public class ReadOperation {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistenceUnit1");
 		EntityManager em = emf.createEntityManager();
+		EntityTransaction et = em.getTransaction();
 		
-		Employee e = em.find(Employee.class, 1); // find(Entity.class, primary key)
-		System.out.println("\n"+e+"\n");
-		emf.close();
+		Employee e = em.find(Employee.class, 2);
+		
+		if(e != null) {
+			et.begin();
+			em.remove(e);
+			et.commit();
+			emf.close();
+		}
+		
+		System.out.println("Data deleted");
 		
 	}
 }

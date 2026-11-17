@@ -12,7 +12,7 @@ public class InsertOperation {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction et = em.getTransaction();
 		
-		Employee emp1 = new Employee(1,"Max",10000.6,"Cuttack");
+		Employee emp1 = new Employee(2,"Sanjiv",100.6,"BBSR");
 		
 		et.begin();
 		em.persist(emp1);
