@@ -10,18 +10,11 @@ public class ReadOperation {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistenceUnit1");
 		EntityManager em = emf.createEntityManager();
-		EntityTransaction et = em.getTransaction();
 		
 		Employee e = em.find(Employee.class, 2);
-		
-		if(e != null) {
-			et.begin();
-			em.remove(e);
-			et.commit();
-			emf.close();
-		}
-		
-		System.out.println("Data deleted");
+		System.out.println("\n");
+		System.out.println("Data:");
+		System.out.println(e);
 		
 	}
 }
