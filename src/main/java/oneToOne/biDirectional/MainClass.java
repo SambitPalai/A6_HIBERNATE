@@ -1,4 +1,4 @@
-package oneToOne;
+package oneToOne.biDirectional;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -12,15 +12,16 @@ public class MainClass {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction et = em.getTransaction();
 
-		Aadhar a1 = new Aadhar(null,"Max",25,"PMax","4131414242");
-		Aadhar a2 = new Aadhar(null,"Ram",23,"PRam","7131412411");
+		Aadhar a1 = new Aadhar(null,"Max",25,"PMax","4131414242", null);
+		Aadhar a2 = new Aadhar(null,"Ram",23,"PRam","7131412411", null);
 		
 		Pan p1 = new Pan(null,"Software Engineer",62423131,a1);
 		Pan p2 = new Pan(null,"Banker",52341141,a2);
 		
+		a1.setPan(p1);
+		a2.setPan(p2);
+		
 		et.begin();
-		em.persist(a1);
-		em.persist(a2);
 		em.persist(p1);
 		em.persist(p2);
 		et.commit();

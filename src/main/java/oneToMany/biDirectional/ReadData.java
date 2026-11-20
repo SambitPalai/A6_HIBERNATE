@@ -1,4 +1,4 @@
-package oneToOne;
+package oneToMany.biDirectional;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -10,14 +10,15 @@ public class ReadData {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistenceUnit1");
 		EntityManager em = emf.createEntityManager();
 		
-		Pan pan = em.find(Pan.class, 1);
-		System.out.println("\n"+pan+"\n");
+		Branches branches = em.find(Branches.class, 1);
+		System.out.println("\n"+branches+"\n");
+
 		Thread.sleep(3000);
 		
-		Aadhar aadhar = pan.getAadhar();
-
-		System.out.println("getter method of Aadhar gets called .");
-		System.out.println("\n"+aadhar+"\n");
+		Hospital hospital= branches.getHospital();
+		
+		System.out.println("getter method of Branches gets called .");
+		System.out.println("\n"+hospital+"\n");
 		emf.close();
 		
 	}
